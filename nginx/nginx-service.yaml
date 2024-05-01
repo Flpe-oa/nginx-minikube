@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  labels:
+    app: nginx
+  name: nginx
+  namespace: default
 spec:
+  ports:
+    - port: 81
+      protocol: TCP
+      targetPort: 81
   selector:
     app: nginx
-  ports:
-    - protocol: TCP
-      port: 81  # Esta é a porta exposta pelo serviço dentro do cluster
-      targetPort: 81  # Esta é a porta do container
-  type: ClusterIP
-
+  type: LoadBalancer
