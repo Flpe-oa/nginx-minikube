@@ -12,4 +12,5 @@ spec:
       targetPort: 81
   selector:
     app: nginx
-  type: LoadBalancer
+  type: ClusterIP
+
